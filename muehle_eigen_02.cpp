@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include "feld_array.cpp"
-using namespace std;
+#include "feld_array.cpp"       //lädt das Spielfeld
+using namespace std;        
 
 int main(){
     cout << "\nOutput main\n";  //macht eine Überschrift
