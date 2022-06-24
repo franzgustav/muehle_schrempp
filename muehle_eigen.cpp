@@ -6,8 +6,8 @@ int main(){
     feld = "O";
     hori = "--";
     vert = "|";
-    //runter = "\\";
-    //hoch = "/";
+    //runter = "\\"; FVVXCBVB
+    //hoch = "/"; ndsfNKNAFS
     leer = " ";
     cout << "01: " <<feld << hori << hori + hori << hori << hori << feld << hori + hori << hori << hori << hori << feld << endl;
     cout << "02: " << vert << leer +leer + leer + leer + leer + leer + leer + leer + leer + leer << vert << leer + leer + leer + leer  << leer << leer << leer << leer << leer << leer << vert << endl;
