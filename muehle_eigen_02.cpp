@@ -5,6 +5,7 @@ using namespace std;
 
 int main(){
     cout << "\nOutput main\n";  //macht eine Überschrift
+    //einlesen();
     zeichneFeld();      //Aufrufen der Funktion "zeichneFeld"
     cout << endl;       
     return 0;

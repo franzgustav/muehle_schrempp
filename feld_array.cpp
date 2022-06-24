@@ -7,15 +7,50 @@ using namespace std;
     };       //Array für den aeusseren Ring
 }*/
 
+/*int einlesen(string AR[7][7]){
+    int eingabew, eingabes;
+    AR[7][7] = {
+        {"O", "O", "O", "O", "O", "O", "O"},
+        {"O", "O", "O", "O", "O", "O", "O"},
+        {"O", "O", "O", "O", "O", "O", "O"},
+        {"O", "O", "O", "O", "O", "O", "O"},
+        {"O", "O", "O", "O", "O", "O", "O"},
+        {"O", "O", "O", "O", "O", "O", "O"},
+        {"O", "O", "O", "O", "O", "O", "O"}
+    };
+
+    for (int i = 0; i <= 9; i++)
+    {
+        cout << "Spieler Weiß setzen Sie ihren " << i << " Stein";
+        cin >> eingabew;
+        switch(int(eingabew)) {
+            case 11: 
+                AR[1][1]="W";
+                break;
+            case 14: 
+                AR[1][4]="W";
+                break;
+            case 17: 
+                AR[1][7]="W";
+                break;
+            case 22: 
+                AR[2][2]="W";
+                break;
+            case 24: 
+                AR[2][2]="W";
+                break;
+            default:
+                cout << "Ungültige Eingabe";
+            }
+    return 0;
+};*/
+
 void zeichneFeld(){
     cout << "Spielfeld mit Array: \n\n";
 
-    string AR[8] = {
-        "W", "O", "O", "O", "O", "O", "O", "O"};       //Array für den aeusseren Ring
-
     string feldar[14][14] = {
-        {"   ", "A", "    ", "B", "    ", "C", "    ", "D", "    ", "E", "    ", "F", "    ", "G"},
-        {"1: ", AR[0], "----", "-", "----", "-", "----", "O", "----", "-", "----", "-", "----", "O"},
+        {"   ", "1", "    ", "2", "    ", "3", "    ", "4", "    ", "5", "    ", "6", "    ", "7"},
+        {"1: ", "O", "----", "-", "----", "-", "----", "O", "----", "-", "----", "-", "----", "O"},
         {"   ", "|", "    ", " ", "    ", " ", "    ", "|", "    ", " ", "    ", " ", "    ", "|"},
         {"2: ", "|", "    ", "O", "----", "-", "----", "O", "----", "-", "----", "O", "    ", "|"},
         {"   ", "|", "    ", "|", "    ", " ", "    ", "|", "    ", " ", "    ", "|", "    ", "|"},
@@ -39,5 +74,5 @@ void zeichneFeld(){
     }
     
 
-    //return 0;
+   // return 0;
 }
