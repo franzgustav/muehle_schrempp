@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
     cout << "\nOutput main\n";
-    zeichneFeld();
-    cout << endl;
+    zeichneFeld();      //Aufrufen der Funktion "zeichneFeld"
+    cout << endl;       
     return 0;
 }
