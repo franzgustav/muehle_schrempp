@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <string>   //testkommentar
 #include "feld_array.cpp"       //lädt das Spielfeld
 using namespace std;        
 
