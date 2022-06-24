@@ -11,7 +11,7 @@ void zeichneFeld(){
     cout << "Spielfeld mit Array: \n\n";
 
     string AR[8] = {
-        "Test", "O", "O", "O", "O", "O", "O", "O"};       //Array für den aeusseren Ring
+        "W", "O", "O", "O", "O", "O", "O", "O"};       //Array für den aeusseren Ring
 
     string feldar[14][14] = {
         {"   ", "A", "    ", "B", "    ", "C", "    ", "D", "    ", "E", "    ", "F", "    ", "G"},
