@@ -6,7 +6,7 @@ int main(){
 
 cout << "\nSpielfeldkoordinaten mit Array: \n\n";       //Überschrift ausgeben
 
-    cout << "\nSpielfeld\n";        //Überschrift ausgeben
+    cout << "\nSpielfeld\n";         //Überschrift ausgeben
     string ARR[24] = {"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0",};        //leeres Spielfeld mit Nullen erstellen, linke Seite
     string feldarr[13][13] = {
         {ARR[0], "----", "-", "----", "-", "----", ARR[1], "----", "-", "----", "-", "----", ARR[2]},
