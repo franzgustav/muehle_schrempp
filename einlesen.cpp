@@ -67,7 +67,7 @@ cout << "\nSpielfeldkoordinaten mit Array: \n\n";       //Überschrift ausgeben
         ARR[position] = "S";        //"S" an diese Position des Arrays schreiben
 
         //i--;        //Zähler runtersetzen wegen vorheriger Ausgabe
-    }
+    
      
 
     string feldarra[13][13] = {     //neues Array auf der linke Seiten wird erstellt zum eintragen
@@ -97,6 +97,7 @@ cout << "\nSpielfeldkoordinaten mit Array: \n\n";       //Überschrift ausgeben
             cout << feldar[j][i];
         }
         cout << endl;
+    }
     }
 
 
