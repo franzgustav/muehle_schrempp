@@ -2,6 +2,14 @@
 #include <string>
 using namespace std;
 
+void Verschiebenfrage(int Schiebeposition, int Steinposition){       //Stein verschieben Abfragefunktion, nicht fertig 19.07 Schrempp
+    cout << "Welchen Stein möchten Sie verschieben? ";
+    cin >> Steinposition;
+    cout << "Wohin möchten Sie den Stein schieben? ";
+    cin >> Schiebeposition;
+}       //prüfen ob Zug möglich ist (Feld liegt daneben und ist frei), ansonsten Fehlermeldung und erneut abfragen (Schleife)
+        //Position und Stein in Array schreiben und vorheriges Positionsfeld auf 0 setzen
+
 int main()
 {
 
@@ -120,62 +128,6 @@ int main()
         }
     }
 
-    /*
-        int eingabew, eingabes;
-        string AR[7][7] = {
-            {"O", "O", "O", "O", "O", "O", "O"},
-            {"O", "O", "O", "O", "O", "O", "O"},
-            {"O", "O", "O", "O", "O", "O", "O"},
-            {"O", "O", "O", "O", "O", "O", "O"},
-            {"O", "O", "O", "O", "O", "O", "O"},
-            {"O", "O", "O", "O", "O", "O", "O"},
-            {"O", "O", "O", "O", "O", "O", "O"}
-        };
-
-        int positiony, positionx;
-        for (int i = 0; i <= 1; i++)
-        {
-            cout << "\nSpieler Weiss setzen Sie ihren " << i << " Stein: ";
-            cin >> eingabew;
-            positiony = eingabew/10%10 - 1;
-            positionx = eingabew%10 - 1;
-            AR[positiony][positionx] = "W";
-            //cout <<  endl << AR[positiony][positionx] << endl << positiony << endl << positionx << endl;
-
-            cout << "\nSpieler Schwarz setzen Sie ihren " << i << " Stein: ";
-            cin >> eingabes;
-            positiony = eingabes/10%10 - 1;
-            positionx = eingabes%10 - 1;
-            AR[positiony][positionx] = "S";
-            //cout <<  endl << AR[positiony][positionx] << endl << positiony << endl << positionx << endl;
-        }
-
-    cout << "Spielfeld mit Array: \n\n";
-
-        string feldar[14][14] = {
-            {"   ", "1", "    ", "2", "    ", "3", "    ", "4", "    ", "5", "    ", "6", "    ", "7"},
-            {"1: ", AR[0][0], "----", "-", "----", "-", "----", AR[0][3], "----", "-", "----", "-", "----", AR[0][6]},
-            {"   ", "|", "    ", " ", "    ", " ", "    ", "|", "    ", " ", "    ", " ", "    ", "|"},
-            {"2: ", "|", "    ", AR[1][1], "----", "-", "----", AR[1][3], "----", "-", "----", AR[1][5], "    ", "|"},
-            {"   ", "|", "    ", "|", "    ", " ", "    ", "|", "    ", " ", "    ", "|", "    ", "|"},
-            {"3: ", "|", "    ", "|", "    ", AR[2][2], "----", AR[2][3], "----", AR[2][4], "    ", "|", "    ", "|"},
-            {"   ", "|", "    ", "|", "    ", "|", "    ", " ", "    ", "|", "    ", "|", "    ", "|"},
-            {"4: ", AR[3][0], "----", AR[3][1], "----", AR[3][2], "    ", " ", "    ", AR[3][4], "----", AR[3][5], "----", AR[3][6]},
-            {"   ", "|", "    ", "|", "    ", "|", "    ", " ", "    ", "|", "    ", "|", "    ", "|"},
-            {"5: ", "|", "    ", "|", "    ", AR[4][2], "----", AR[4][3], "----", AR[4][4], "    ", "|", "    ", "|"},
-            {"   ", "|", "    ", "|", "    ", " ", "    ", "|", "    ", " ", "    ", "|", "    ", "|"},
-            {"6: ", "|", "    ", AR[5][1], "----", "-", "----", AR[5][3], "----", "-", "----", AR[5][5], "    ", "|"},
-            {"   ", "|", "    ", " ", "    ", " ", "    ", "|", "    ", " ", "    ", " ", "    ", "|"},
-            {"7: ", AR[6][0], "----", "-", "----", "-", "----", AR[6][3], "----", "-", "----", "-", "----", AR[6][6]}
-        };
-        for (int j = 0; j <= 13; j++)
-        {
-            for (int i = 0; i <= 13; i++)
-            {
-                cout << feldar[j][i];
-            }
-            cout << endl;
-        }*/
     return 0;
 }
 
