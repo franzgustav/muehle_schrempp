@@ -1,23 +1,96 @@
 #include <iostream>
 #include <string>
+//#include "Schiebefunktion.cpp"
 using namespace std;
 
-void Verschiebenfrage(int Schiebeposition, int Steinposition){       //Stein verschieben Abfragefunktion, nicht fertig 19.07 Schrempp
-    cout << "Welchen Stein möchten Sie verschieben? ";
-    cin >> Steinposition;
-    cout << "Wohin möchten Sie den Stein schieben? ";
-    cin >> Schiebeposition;
-}       //prüfen ob Zug möglich ist (Feld liegt daneben und ist frei), ansonsten Fehlermeldung und erneut abfragen (Schleife)
-        //Position und Stein in Array schreiben und vorheriges Positionsfeld auf 0 setzen
+//Variablen deklarieren
 
-int main()
-{
+ //prüfen ob Zug möglich ist (Feld liegt daneben und ist frei), ansonsten Fehlermeldung und erneut abfragen (Schleife)
+        //Position und Stein in Array schreiben und vorheriges Positionsfeld auf 0 setzen
+/*
+void Verschiebenerlaubt(){  //Prüfen ob Position leer und nur ein Zug daneben liegt
+    bool erlaubt = false;
+    while(erlaubt == false){
+        Verschiebenfrage();
+        switch(Schiebeposition);
+    }
+}     */
+
+class Spieler{      //Erstellen Klasse für die beiden Spieler
+    public:
+    string Name;
+    int Steinzahl;
+};
+
+class Stein{        //Erstellen Klasse für die Steine
+    public:
+    bool gesetzt;
+    int Position;
+    int Farbe;
+};
+
+class Feld{
+    public:
+    int Feldbelegung;       //0 = leer; 1 = weiss; 2 = schwarz
+    string Feldanzeige;     //S, W oder 0
+    int Feldnachbar1;       //Nachbarfeld 1
+    int Feldnachbar2;       //Nachbarfeld 2
+    int Feldnachbar3;       //Nachbarfeld 3
+    int Feldnachbar4;       //Nachbarfeld 4
+};
+
+int main(){
+
+    Spieler SpielerWeiss;
+    SpielerWeiss.Name = "Weiss";
+    SpielerWeiss.Steinzahl = 9;
+
+    Spieler SpielerSchwarz;
+    SpielerSchwarz.Name = "Schwarz";
+    SpielerSchwarz.Steinzahl = SpielerWeiss.Steinzahl;
+
+    Stein SteinWeiss;
+    SteinWeiss.gesetzt = false;
+    SteinWeiss.Position = 0;
+    SteinWeiss.Farbe = 0;
+
+    Stein SteinSchwarz;
+    SteinSchwarz.gesetzt = false;
+    SteinSchwarz.Position = 0;
+    SteinSchwarz.Farbe = 1;
+
+    Feld Feld00;
+    Feld00.Feldbelegung = 0;
+    Feld00.Feldanzeige = "0";
+    Feld00.Feldnachbar1 = 1;
+    Feld00.Feldnachbar2 = 1;
+    Feld00.Feldnachbar3 = 4;
+    Feld00.Feldnachbar4 = 4;
+
+    /*int Zweiwegzug(int Zweiwegzug1, int Zweiwegzug2){
+
+        return Zweiwegzug1, Zweiwegzug2;
+    };*/
+
+
+   /* int feldwunsch = 0;
+    switch (feldwunsch)
+    {
+    case /* constant-expression */
+        /* code 
+        break;
+    
+    default:
+        break;
+    }*/
+
+
 
     cout << "\nSpielfeldkoordinaten mit Array: \n\n"; //Überschrift ausgeben
 
     cout << "\nSpielfeld\n"; //Überschrift ausgeben
     string ARR[24] = {
-        "0",
+        Feld00.Feldanzeige,
         "0",
         "0",
         "0",
@@ -89,11 +162,11 @@ int main()
     int position;                // Variablen deklarieren zum Einlesen
     for (int i = 1; i <= 2; i++) // Schleife um alle Steine zu legen
     {
-        cout << "\nSpieler Weiss setzen Sie ihren " << i << ". Stein: "; // Weiss setzt Stein
+        cout << "\nSpieler " << SpielerWeiss.Name << " setzen Sie ihren " << i << ". Stein: "; // Weiss setzt Stein
         cin >> position;                                                 // Benutzereingabe Spieler weiß wir eingelesen
         ARR[position] = "W";                                             //"W" an diese Position des Arrays schreiben
 
-        cout << "\nSpieler Schwarz setzen Sie ihren " << i << ". Stein: "; // Schwarz setzt Stein
+        cout << "\nSpieler " << SpielerSchwarz.Name << " setzen Sie ihren " << i << ". Stein: "; // Schwarz setzt Stein
         cin >> position;                                                   // Benutzereingabe Spieler schwarz wird eingelesen
         ARR[position] = "S";                                               //"S" an diese Position des Arrays schreiben
 
@@ -128,8 +201,38 @@ int main()
         }
     }
 
+   /* bool korrekterZug = false; //Zugfunktion
+    do {  
+       // int Verschiebenfrage(int Schiebeposition, int Steinposition){       //Stein verschieben Abfragefunktion, nicht fertig 19.07 Schrempp
+        
+        int Schiebeposition, Steinposition;
+        string Schiebepositionsanzeige, Steinpositionsanzeige;
+        cout << "Welchen Stein möchten Sie verschieben? ";
+        cin >> Steinposition;
+        cout << "Wohin möchten Sie den Stein schieben? ";
+        cin >> Schiebeposition;
+        Schiebepositionsanzeige = ARR[Schiebeposition];
+        Steinpositionsanzeige = ARR[Steinposition];
+        switch (Steinposition){
+            case 0:
+                if(Feld00.Feldbelegung = 1){   //verschiebt auch wirklich der richtige Spieler den richtigen Stein?
+                    if(ARR[Schiebeposition] == 1 || ARR[Schiebeposition] == 9){   //Liegt die Schiebeposition eins weiter
+                        if(ARR[Schiebeposition] = 0){   //Ist die Schiebeposition leer
+                            ARR[Schiebeposition] = "S";   //Schiebeposition mit einem S für den schwarzen Stein beschreiben
+                            ARR[Steinposition] = 0; //Steinposition mit der Zahl 0 als leer kennzeichnen
+                        }
+                    }
+                }
+                break;        
+        }
+   // }
+    //return Schiebeposition, Steinposition, korrekterZug;
+    }while (korrekterZug = false);*/
+
     return 0;
 }
+
+/*
 
 string* removeable(string AR[24], string currentPlayer){
    string validposition[9]={};
@@ -151,4 +254,4 @@ string* removeable(string AR[24], string currentPlayer){
 bool ismill(int positionindex){
 
     return false;
-}
+}*/
