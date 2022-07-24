@@ -287,7 +287,7 @@ int main()
             int position;
             while(true)
             {
-                cout << "Spieler " << currentPlayer << ", waehle einer deiner eigenen Spielsteine für die Schiebephase aus: ";
+                cout << "Spieler " << currentPlayer << ", waehle einer deiner eigenen Spielsteine fuer die Schiebephase aus: ";
                 cin >> position;
 
                 if(state[position] == currentPlayer) 
