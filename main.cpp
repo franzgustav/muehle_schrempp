@@ -24,9 +24,8 @@ const int validMoves[24][4] = {
     { 4, 6, 8, -1 },    // 7
     { 7, 12, -1, -1 },  // 8
     { 0, 10, 21, -1 },  // 9
-    { 3, 9, 15, 11},    // 10
-    { 6, 15, 10, -1 },  // 11
-    { 8, 13, 17, -1 },  // 12
+    { 3, 9, 15, 11},    // 102
+
     { 5, 12, 20, 14 },  // 13
     { 2, 23, 13, -1 },  // 14
     { 11, 16, -1, -1 }, // 15
@@ -40,7 +39,8 @@ const int validMoves[24][4] = {
     { 13, 22, -1, -1 }  // 23
 };
 
-string state[24] = {
+//Spielfeld mit Nullen an jedem Array Slot erzeugen 
+string state[24] = { 
     "0",
     "0",
     "0",
@@ -67,6 +67,7 @@ string state[24] = {
     "0",
 };
 
+// Spielfeld mit den Indizes für die NAchher Positonsanagbe 
 string boardIndices[24] = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
 
 void printGameBoard() 
@@ -122,6 +123,7 @@ bool isMill(int index1, int index2, int index3)
     return state[index1] == state[index2] && state[index2] == state[index3];
 }
 
+//Kombination der möglichen Mühlen auf dem SPielfeld 
 bool stoneIsInMill(int index)
 {
     switch (index)
@@ -180,6 +182,7 @@ bool stoneIsInMill(int index)
     }
 }
 
+//Entfernen der Steine des Gegeners 
 void removeOpponentStone() {
     while(true)
     {
@@ -190,7 +193,6 @@ void removeOpponentStone() {
         string opponent = currentPlayer == PLAYER_1 ? PLAYER_2 : PLAYER_1;
         if(position > 0 && position < 24 && state[position] == opponent && !stoneIsInMill(position))
         {
-            // TODO Nur entfernen, wenn Stein nicht selbst in einer Mühle liegt
             state[position] = "0";
             printGameBoard();
             break;
@@ -279,7 +281,6 @@ int main()
         if(stones >= 3) 
         {
             // Schiebephase
-            //MS 1 für Weiss und 2 für Schwarz
             int position;
             while(true)
             {
@@ -334,10 +335,12 @@ int main()
             
             state[position] = "0";
             state[targetPosition] = currentPlayer;
+            printGameBoard();
 
             // Prüfung auf neue Mühle
             checkMill(targetPosition);
         }
+        
         else if(stones == 3) 
         {
             // Sprungphase
@@ -370,6 +373,7 @@ int main()
 
             state[position] = "0";
             state[targetPosition] = currentPlayer;
+            printGameBoard();
 
             // Prüfung auf neue Mühle
             checkMill(targetPosition);
