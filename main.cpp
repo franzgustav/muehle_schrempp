@@ -281,7 +281,7 @@ int main()
             }
         }
 
-        if(stones >= 3) 
+        if(stones > 3) 
         {
             // Schiebephase
             int position;
@@ -352,7 +352,7 @@ int main()
 
             while(true) 
             {
-                cout << "Spieler " << currentPlayer << ", waehle einer deiner eigenen Spielsteine für die Sprungphase aus";
+                cout << "Spieler " << currentPlayer << ", waehle einer deiner eigenen Spielsteine fuer die Sprungphase aus";
                 cin >> position;
 
                 if(position >= 0 && position < 24 && state[position] == currentPlayer) //Prüfung ob Feld im Array Indices und Steine gehört dem Spieler 
