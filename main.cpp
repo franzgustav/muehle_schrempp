@@ -119,13 +119,13 @@ void printGameBoard()
     }
 }
 
-//Vorraussetzung für eine Mühle: Inhalt Index 1 entspricht Index 2 "logisches und" Index 2 entspricht Index 3 (können nur 2 Variablen miteiander vergleichen werden) 
+//Vorraussetzung für eine Mühle: Inhalt Index 1 entspricht Index 2 "logisches und" Index 2 entspricht Index 3 ( es können nur 2 Variablen miteiander vergleichen werden) 
 bool isMill(int index1, int index2, int index3)
 {
     return state[index1] == state[index2] && state[index2] == state[index3];
 }
 
-//Kombination der möglichen Mühlen auf dem Spielfeld abhängig von dem 
+//Kombination der möglichen Mühlen auf dem Spielfeld mit Prüfung druch die isMill Funktion
 bool stoneIsInMill(int index)
 {
     switch (index)
@@ -133,7 +133,7 @@ bool stoneIsInMill(int index)
         case 0:            
             return isMill(0, 1, 2) || isMill(0, 9, 21); //Bsp. Wird Stein an Position 0 Gewählt wird auf Mühle in x und y geprüft, Logisch über ein "oder" Vernknüpft. 
         case 1:            
-            return isMill(0, 1, 2) || isMill(1,4,7);
+            return isMill(0, 1, 2) || isMill(1,4,7); //
         case 2:
             return isMill(0, 1, 2) || isMill(2, 14, 23);            
         case 3:
@@ -192,7 +192,8 @@ void removeOpponentStone() {
         int position;
         cin >> position;
 
-        string opponent = currentPlayer == PLAYER_1 ? PLAYER_2 : PLAYER_1;
+        string opponent = currentPlayer == PLAYER_1 ? PLAYER_2 : PLAYER_1; //(Ternary Operator -> ? Kurzschreibeweise if) 
+        // Wenn Opponetne d
         if(position > 0 && position < 24 && state[position] == opponent && !stoneIsInMill(position))
         {
             state[position] = "0";
