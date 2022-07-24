@@ -102,7 +102,7 @@ void printGameBoard()
         {"|", "    ", " ", "    ", " ", "    ", "|", "    ", " ", "    ", " ", "    ", "|"},
         {state[21], "----", "-", "----", "-", "----", state[22], "----", "-", "----", "-", "----", state[23]}};
 
-    // Ausgeben beider Felder
+    // Ausgeben beider Felder nebeneinander
     for (int j = 0; j < 13; j++) 
     {
         for (int i = 0; i < 13; i++)
@@ -118,18 +118,19 @@ void printGameBoard()
     }
 }
 
+//Vorraussetzung für eine Mühle: Inhalt Index 1 entspricht Index 2 "logisches und" Index 2 entspricht Index 3 (können nur 2 Variablen miteiander vergleichen werden) 
 bool isMill(int index1, int index2, int index3)
 {
     return state[index1] == state[index2] && state[index2] == state[index3];
 }
 
-//Kombination der möglichen Mühlen auf dem SPielfeld 
+//Kombination der möglichen Mühlen auf dem Spielfeld abhängig von dem 
 bool stoneIsInMill(int index)
 {
     switch (index)
     {
         case 0:            
-            return isMill(0, 1, 2) || isMill(0, 9, 21);
+            return isMill(0, 1, 2) || isMill(0, 9, 21); //Bsp. Wird Stein an Position 0 Gewählt wird auf Mühle in x und y geprüft, Logisch über ein "oder" Vernknüpft. 
         case 1:            
             return isMill(0, 1, 2) || isMill(1,4,7);
         case 2:
