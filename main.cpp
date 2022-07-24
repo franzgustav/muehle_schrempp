@@ -193,9 +193,9 @@ void removeOpponentStone() {
         cin >> position;
 
         string opponent = currentPlayer == PLAYER_1 ? PLAYER_2 : PLAYER_1; //(Ternary Operator -> ? Kurzschreibeweise if beschrieben am nächsten Ternary Operator -> anschlaulicher zu erklären. 
-        if(position > 0 && position < 24 && state[position] == opponent && !stoneIsInMill(position))
+        if(position >= 0 && position < 24 && state[position] == opponent && !stoneIsInMill(position)) // Überprüfung ob die Position im Arry ist, Stein dem Gegner gehört und dass er sich nicht in einer Mühle befindet
         {
-            state[position] = "0";
+            state[position] = "0"; //Feld wird wieder freigebeben also auf 0 gestellt
             printGameBoard();
             break;
         }
@@ -222,10 +222,10 @@ int main()
     // Setzphase
     while(true)
     {
-        bool player1CanMove = currentPlayer == PLAYER_1 && stonesPlayer1 > 0;
+        bool player1CanMove = currentPlayer == PLAYER_1 && stonesPlayer1 > 0; //Bedigung für das Setzten der Steine mit Zuordnung zum Spieler
         bool player2CanMove = currentPlayer == PLAYER_2 && stonesPlayer2 > 0;
 
-        if(!player1CanMove && !player2CanMove) 
+        if(!player1CanMove && !player2CanMove) //Abbruchbedingung für die Setztphase. 
         {
             break;
         }
@@ -234,14 +234,14 @@ int main()
         while(true) {
             // Nr des nächsten Steins des aktuellen Spielers
             int nextStoneNumber = 9 - (currentPlayer == PLAYER_1 ? stonesPlayer1 : stonesPlayer2) + 1;
-            // Steinnumemr = 9- (Steine des Aktuellen Spielers. Wenn Aktueller Spieler gleich Spieler 1 dann Stonesplayer 1 abziehen, ansonsten Stoneplayer 2 abziehen) +1
+            // Steinnumemr des nächsten Steins = 9- (Steine des Aktuellen Spielers. Wenn Aktueller Spieler gleich Spieler 1 dann Stonesplayer 1 abziehen, ansonsten Stoneplayer 2 abziehen) +1
 
             cout << "\nSpieler " << currentPlayer << " setzen Sie Ihren " << nextStoneNumber << ". Stein: ";
             cin >> position;
 
-            if(position >= 0 && position <= 23 && state[position] == "0") 
+            if(position >= 0 && position <= 23 && state[position] == "0") //Bedingung: Feld im Vorgebeben Bereich 0-23 (Array Indices) und Feld ist leer also mit einer 0 beschrieben. 
             {
-                state[position] = currentPlayer;
+                state[position] = currentPlayer;  //Auswahl Spieler, dessen Stein gesetzt werden soll. Mit abschließender Verrechnung der übrigen Steine.
                 if(currentPlayer == PLAYER_1) 
                 {
                     stonesPlayer1--;
@@ -254,7 +254,7 @@ int main()
             } 
             else
             {
-                cout << "Ungültige Positionsangabe.";
+                cout << "Ungueltige Positionsangabe.";
             }
         }
 
@@ -264,11 +264,11 @@ int main()
         checkMill(position);
 
         // Aktuellen Spieler umschalten für nächsten Spielzug
-        currentPlayer = currentPlayer == PLAYER_1 ? PLAYER_2 : PLAYER_1;
+        currentPlayer = currentPlayer == PLAYER_1 ? PLAYER_2 : PLAYER_1; //Ternary Operator zur Spieler-Umschaltung
     }
 
     // Schiebephase & Sprungphase
-    bool gameover = false;
+    bool gameover = false; //Gewinnbedingung 
     while(!gameover)
     {
         // Anzahl Steine aktueller Spieler
@@ -287,7 +287,7 @@ int main()
             int position;
             while(true)
             {
-                cout << "Spieler " << currentPlayer << ", wähle einer deiner eigenen Spielsteine für die Schiebephase aus: ";
+                cout << "Spieler " << currentPlayer << ", waehle einer deiner eigenen Spielsteine für die Schiebephase aus: ";
                 cin >> position;
 
                 if(state[position] == currentPlayer) 
@@ -307,13 +307,13 @@ int main()
                     }
                 } 
 
-                cout << "Ungültige Positionsangabe";
+                cout << "Ungueltige Positionsangabe";
             }
             
             int targetPosition;
             while(true)
             {
-                cout << "\nWohin möchten Sie den Stein verschieben? ";
+                cout << "\nWohin moechten Sie den Stein verschieben? ";
                 cin >> targetPosition;
 
                 if(state[targetPosition] == "0") 
@@ -333,7 +333,7 @@ int main()
                     }
                 } 
                 
-                cout << "Ungültige Positionsangabe";
+                cout << "Ungueltige Positionsangabe";
             }
             
             state[position] = "0";
@@ -352,10 +352,10 @@ int main()
 
             while(true) 
             {
-                cout << "Spieler " << currentPlayer << ", wähle einer deiner eigenen Spielsteine für die Sprungphase aus";
+                cout << "Spieler " << currentPlayer << ", waehle einer deiner eigenen Spielsteine für die Sprungphase aus";
                 cin >> position;
 
-                if(position >= 0 && position < 24 && state[position] == currentPlayer) 
+                if(position >= 0 && position < 24 && state[position] == currentPlayer) //Prüfung ob Feld im Array Indices und Steine gehört dem Spieler 
                 {
                     break;
                 }
@@ -363,15 +363,15 @@ int main()
 
             while(true) 
             {
-                cout << "\nWohin möchten Sie springen?";
+                cout << "\nWohin moechten Sie springen?";
                 cin >> targetPosition;
 
-                if(state[targetPosition] == "0") 
+                if(state[targetPosition] == "0") //Bedingung um den Stein zu setezten -> leeres Array Feld 
                 {
                     break;
                 }
 
-                cout << "Ungültige Positionsangabe";
+                cout << "Ungueltige Positionsangabe";
             }
 
             state[position] = "0";
