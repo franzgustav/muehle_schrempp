@@ -192,8 +192,7 @@ void removeOpponentStone() {
         int position;
         cin >> position;
 
-        string opponent = currentPlayer == PLAYER_1 ? PLAYER_2 : PLAYER_1; //(Ternary Operator -> ? Kurzschreibeweise if) 
-        // Wenn Opponetne d
+        string opponent = currentPlayer == PLAYER_1 ? PLAYER_2 : PLAYER_1; //(Ternary Operator -> ? Kurzschreibeweise if beschrieben am nächsten Ternary Operator -> anschlaulicher zu erklären. 
         if(position > 0 && position < 24 && state[position] == opponent && !stoneIsInMill(position))
         {
             state[position] = "0";
@@ -235,6 +234,7 @@ int main()
         while(true) {
             // Nr des nächsten Steins des aktuellen Spielers
             int nextStoneNumber = 9 - (currentPlayer == PLAYER_1 ? stonesPlayer1 : stonesPlayer2) + 1;
+            // Steinnumemr = 9- (Steine des Aktuellen Spielers. Wenn Aktueller Spieler gleich Spieler 1 dann Stonesplayer 1 abziehen, ansonsten Stoneplayer 2 abziehen) +1
 
             cout << "\nSpieler " << currentPlayer << " setzen Sie Ihren " << nextStoneNumber << ". Stein: ";
             cin >> position;
