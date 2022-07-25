@@ -71,7 +71,7 @@ string state[24] = {
 // Spielfeld mit den Indizes für die NAchher Positonsanagbe 
 string boardIndices[24] = {"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
 
-void printGameBoard() 
+void printGameBoard() // Funktion um Spielfeld und leeres Spielfeld mit Koordinaten auszugeben
 {
     string indices[13][13] = {
         {boardIndices[0], "----", "-", "----", "-", "----", boardIndices[1], "----", "-", "----", "-", "----", boardIndices[2]},
